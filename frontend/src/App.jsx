@@ -1,9 +1,20 @@
-import React from 'react'
+import { useEffect } from "react";
+import axios from "./api/axiosconfig";
 
 const App = () => {
-  return (
-    <div className='text-2xl text-amber-700 text-center bg-blue-900'>App</div>
-  )
-}
+  const getproduct = async () => {
+    try {
+      const res = axios.get("/products");
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-export default App
+  useEffect(() => {
+    getproduct();
+  }, []);
+  return <div>App</div>;
+};
+
+export default App;
