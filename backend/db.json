@@ -36,5 +36,18 @@
         "count": 120
       }
     }
+  ],
+  "carts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "date": "2025-08-16",
+      "products": [
+        {
+          "productId": 1,
+          "quantity": 2
+        }
+      ]
+    }
   ]
 }
