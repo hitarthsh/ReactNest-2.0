@@ -6,22 +6,11 @@ export const asyncregisteruser = (user) => async (dispatch, getState) => {
     const res = await axios.post("/users", user);
     console.log(res);
 
-    // ✅ Success toast
-    toast.success("User registered successfully!", {
-      position: "top-center",
-      autoClose: 3000,
-      theme: "dark",
-    });
-
+    toast.success("User registered successfully!", {});
   } catch (error) {
-    // ❌ Error toast
     toast.error(
       error.response?.data?.message || "Registration failed. Try again!",
-      {
-        position: "top-center",
-        autoClose: 3000,
-        theme: "dark",
-      }
+      {}
     );
   }
 };
