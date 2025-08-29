@@ -1,22 +1,35 @@
 import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // ✅ useNavigate
 import { useState } from "react";
+import { asyncregisteruser } from "../store/actions/userActions";
+import { useDispatch } from "react-redux";
 
 const Register = () => {
   const {
     register,
-    reset,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate(); // ✅ correct hook
+  const dispatch = useDispatch();
 
-  const RegisterHandler = (user) => {
+  const RegisterHandler = async (user) => {
     user.id = nanoid();
-    console.log(user);
-    reset();
+    user.isAdmin = false;
+
+    // Dispatch the async action
+    await dispatch(asyncregisteruser(user));
+
+    reset(); // clear form after submit
+
+    // optional: small delay so toast shows before navigation
+    setTimeout(() => {
+      navigate("/login");
+    }, 500);
   };
 
   return (
@@ -46,7 +59,7 @@ const Register = () => {
         })}
         className="mb-1 outline-0 border-b p-2 text-4xl"
         type="email"
-        placeholder="john@deo.com"
+        placeholder="john@doe.com"
       />
       {errors.email && (
         <p className="text-red-500 text-sm mb-3">{errors.email.message}</p>
@@ -63,12 +76,12 @@ const Register = () => {
             },
           })}
           className="flex-1 outline-0 p-2 text-4xl pr-12"
-        //   type={showPassword ? "text" : "password"}
+          type={showPassword ? "text" : "password"}
           placeholder="********"
         />
         <button
           type="button"
-        //   onClick={() => setShowPassword((prev) => !prev)}
+          onClick={() => setShowPassword((prev) => !prev)}
           className="absolute right-2 text-2xl cursor-pointer hover:scale-110 transition-transform"
         >
           {showPassword ? "🔓" : "🔒"}

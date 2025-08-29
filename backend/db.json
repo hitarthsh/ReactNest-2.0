@@ -11,7 +11,7 @@
         "number": 7682,
         "zipcode": "12926-3874"
       },
-      "id": 1,
+      "id": "1",
       "email": "john@gmail.com",
       "username": "johnd",
       "password": "m38rmF$",
@@ -21,6 +21,20 @@
       },
       "phone": "1-570-236-7033",
       "__v": 0
+    },
+    {
+      "id": "klX3W6bTWxs3pSX5v9E6M",
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "password": "1qaz0plm",
+      "isAdmin": true
+    },
+    {
+      "id": "1bNKK3GaLWXktOzVtonq1",
+      "username": "hitarth",
+      "email": "shahh0919@gmail.com",
+      "password": "123456",
+      "isAdmin": false
     }
   ],
   "products": [
