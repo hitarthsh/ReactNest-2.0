@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { nanoid } from "nanoid";
 import { Link } from "react-router-dom";
 import { useState } from "react"; // ✅ you forgot this
+import { asyncloginuser } from "../store/actions/userActions";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const {
@@ -12,11 +14,13 @@ const Login = () => {
   } = useForm();
 
   const [showPassword, setShowPassword] = useState(false); // ✅ toggle state
+  const dispatch = useDispatch();
 
   const LoginHandler = (user) => {
     user.id = nanoid();
-    console.log(user);
+    // console.log(user);
     reset(); // optional reset after submit
+    dispatch(asyncloginuser(user));
   };
 
   return (
@@ -57,7 +61,7 @@ const Login = () => {
         />
         <button
           type="button"
-          onClick={() => setShowPassword((prev) => !prev)} 
+          onClick={() => setShowPassword((prev) => !prev)}
           className="absolute right-2 text-2xl cursor-pointer hover:scale-110 transition-transform"
         >
           {showPassword ? "🔓" : "🔒"}

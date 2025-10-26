@@ -26,15 +26,8 @@
       "id": "klX3W6bTWxs3pSX5v9E6M",
       "username": "admin",
       "email": "admin@gmail.com",
-      "password": "1qaz0plm",
+      "password": "admin",
       "isAdmin": true
-    },
-    {
-      "id": "1bNKK3GaLWXktOzVtonq1",
-      "username": "hitarth",
-      "email": "shahh0919@gmail.com",
-      "password": "123456",
-      "isAdmin": false
     }
   ],
   "products": [
